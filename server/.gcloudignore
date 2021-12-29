@@ -13,5 +13,8 @@
 .git
 .gitignore
 
+# Exclude compiled .js files
+*.js
+
 # Node.js dependencies:
 node_modules/

@@ -18,6 +18,9 @@ be performed manually when developing locally.
 * Deploy (target service is defined in app.yml)
     gcloud app deploy
 
+* Live Logging
+    gcloud app logs tail
+
 
 ## Setup
 

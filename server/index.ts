@@ -3,7 +3,7 @@ import { Test } from './endpoints/test/timezone';
 import { User } from './endpoints/user/user';
 
 const app = express();
-const port = 3000;
+const PORT = Number(process.env.PORT) || 8080;
 
 //Test
 const testRoute = new Test();
@@ -14,6 +14,6 @@ app.get('/test/test', testRoute.testFunction)
 const userRoute = new User();
 app.get('/user', userRoute.getUser);
 
-app.listen(port, () => {
-    console.log(`Timezones by location application is running on port ${port}.`);
+app.listen(PORT, () => {
+    console.log(`Node Server Running on Port ${PORT}.`);
 });
