@@ -52,13 +52,16 @@ export class Test {
     }
 
     public async getList(request: Request, response: Response, next: NextFunction) {
-        const effectSnapshot = await db.collection('userprefs').where('uid', '==', 'i').limit(1).get();
-
-        if (effectSnapshot.empty) {
-            return response.status(400).json("User Not Found");
-
+        //const effectSnapshot = await db.collection('test').where('uid', '==', 'i').limit(1).get();
+        const listSnapshot = await db.collection('test').get();
+        if (listSnapshot.empty) {
+            return response.status(400).json("No Data");
         }
-        response.status(200).send(effectSnapshot.data());
+        const rows = [];
+        listSnapshot.forEach(res => {
+            rows.push(res.data())
+        })
+        response.status(200).send(rows);
     }
 
 }

@@ -8,7 +8,8 @@ const PORT = Number(process.env.PORT) || 8080;
 //Test
 const testRoute = new Test();
 app.get('/test/timezones', testRoute.getLocationsWithTimezones);
-app.get('/test/test', testRoute.testFunction)
+app.get('/test/test', testRoute.testFunction);
+app.get('/test', testRoute.getList);
 
 //User
 const userRoute = new User();
