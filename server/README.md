@@ -30,7 +30,7 @@ Install dependencies:
 
 ## Running locally?? Lets Fix this
 ### Running with credentials
-$env:GOOGLE_APPLICATION_CREDENTIALS="B:\Zokya\keys\firebase\stream-toys-web\stream-toys-web-firebase-adminsdk-22ehu-c5ed6d86b6.json"
+$env:GOOGLE_APPLICATION_CREDENTIALS="B:\Zokya\keys\firebase\zokya-media-auth\zokya-media-auth-firebase-adminsdk-lfi1e-2338d650bd.json"
 $env:NODE_ENV="development" 
 
 npm run serve

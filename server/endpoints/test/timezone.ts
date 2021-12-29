@@ -1,5 +1,9 @@
 import { Request, Response, NextFunction } from 'express';
 import { Util } from '../../utils/util';
+const myModule = require('./../../firebase/shared-firebase');
+
+const admin = myModule.admin;
+const db = myModule.db;
 
 interface LocationWithTimezone {
     location: string;
@@ -17,7 +21,7 @@ export class Test {
         });
     };
 
-    getLocationsWithTimezones(request: Request, response: Response, next: NextFunction) {
+    public async getLocationsWithTimezones(request: Request, response: Response, next: NextFunction) {
         let locations: LocationWithTimezone[] = [
             {
                 location: 'Germany',
@@ -46,4 +50,15 @@ export class Test {
         ];
         response.status(200).json(locations);
     }
+
+    public async getList(request: Request, response: Response, next: NextFunction) {
+        const effectSnapshot = await db.collection('userprefs').where('uid', '==', 'i').limit(1).get();
+
+        if (effectSnapshot.empty) {
+            return response.status(400).json("User Not Found");
+
+        }
+        response.status(200).send(effectSnapshot.data());
+    }
+
 }
