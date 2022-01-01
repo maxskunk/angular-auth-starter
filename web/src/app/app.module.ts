@@ -11,10 +11,15 @@ import { firebaseconfig } from '../environments/firebaseconfig';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
+import { HomeComponent } from './pages/home/home.component';
+import { LoginComponent } from './pages/login/login.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    HomeComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -24,7 +29,8 @@ import { AngularFireAuthModule } from '@angular/fire/compat/auth';
     // provideFirebaseApp(() => initializeApp(firebaseconfig.firebase)),
     // provideAuth(() => getAuth()),
     // provideFirestore(() => getFirestore()),
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
