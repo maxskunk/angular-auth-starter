@@ -16,7 +16,6 @@ export class FirebaseTokenInterceptor implements HttpInterceptor {
 
         return this.getToken$().pipe(
             switchMap(res => {
-                console.log("USER INFO: " + JSON.stringify(res));
                 const authReq = request.clone({
                     setHeaders: {
                         'Content-Type': 'application/json',

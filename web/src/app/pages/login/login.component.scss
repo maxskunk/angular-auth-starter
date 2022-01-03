@@ -1,0 +1,25 @@
+.login-container {
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  justify-content: center;
+  margin-top: 150px;
+}
+
+mat-card {
+  mat-card-title {
+    text-align: center;
+  }
+
+  max-width: 400px;
+
+  button {
+
+
+    margin: auto;
+
+    img {
+      width: 20px;
+    }
+  }
+}

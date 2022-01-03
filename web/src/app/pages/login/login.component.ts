@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
+import { Router } from '@angular/router';
 import firebase from 'firebase/compat/app';
 import { FbTestServiceService } from './../../services/fb-test-service.service'
 
@@ -10,13 +11,27 @@ import { FbTestServiceService } from './../../services/fb-test-service.service'
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private auth: AngularFireAuth) { }
+  constructor(private auth: AngularFireAuth,
+    private router: Router) {
+
+  }
 
   ngOnInit(): void {
   }
 
-  login() {
-    this.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider());
+  async loginGoogle() {
+    await this.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider());
+    this.router.navigate(['home']);
+  }
+
+  async loginTwitter() {
+    await this.auth.signInWithPopup(new firebase.auth.TwitterAuthProvider());
+    this.router.navigate(['home']);
+  }
+
+  async loginTwitch() {
+    // await this.auth.signInWithPopup(new firebase.auth.TwitterAuthProvider());
+    // this.router.navigate(['home']);
   }
 
 }

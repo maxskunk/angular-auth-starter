@@ -16,11 +16,20 @@ import { LoginComponent } from './pages/login/login.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FirebaseTokenInterceptor } from './services/interceptors/firebase-token.interceptor';
 
+//Material
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatCardModule } from '@angular/material/card';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatListModule } from '@angular/material/list';
+
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    LoginComponent
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
@@ -31,7 +40,17 @@ import { FirebaseTokenInterceptor } from './services/interceptors/firebase-token
     // provideAuth(() => getAuth()),
     // provideFirestore(() => getFirestore()),
     BrowserAnimationsModule,
-    HttpClientModule
+    HttpClientModule,
+
+    //Material
+    MatToolbarModule,
+    MatIconModule,
+    MatButtonModule,
+    MatMenuModule,
+    MatCardModule,
+    MatDividerModule,
+    MatListModule
+
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,

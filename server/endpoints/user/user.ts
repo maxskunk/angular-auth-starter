@@ -22,8 +22,6 @@ export class User {
                 response.status(200).json({
                     "user": "test"
                 });
-            }).catch((error) => {
-                response.status(401).json(error);
             });
     }
 }
