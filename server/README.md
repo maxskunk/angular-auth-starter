@@ -13,7 +13,7 @@ be performed manually when developing locally.
     gcloud projects list
 
 * Switch Projects
-    gcloud config set project zokya-media
+    gcloud config set project zokya-media-auth
 
 * Deploy (target service is defined in app.yml)
     gcloud app deploy
