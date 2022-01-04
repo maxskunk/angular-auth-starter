@@ -17,6 +17,11 @@ jobs:
         with:
           node-version: '12.x'
       - name: Install Angular Dependancies
+        working-directory: ./web
+        run: npm ci
+      - name: Build web-client
+        working-directory: ./web
+        run: npm run build-prod
         env:
           SERVICE_URL: https://auth-starter-dot-zokya-media-auth.uc.r.appspot.com/
           FIREBASE_API_KEY: ${{ secrets.FIREBASE_API_KEY}}
@@ -27,11 +32,6 @@ jobs:
           FIREBASE_MSG_SENDER_ID: ${{ secrets.FIREBASE_MSG_SENDER_ID}}
           FIREBASE_APP_ID: ${{ secrets.FIREBASE_APP_ID}}
           FIREBASE_MEASUREMENT_ID: ${{ secrets.FIREBASE_MEASUREMENT_ID}}
-        working-directory: ./web
-        run: npm ci
-      - name: Build web-client
-        working-directory: ./web
-        run: npm run build-prod
       - name: Archive build
         if: success()
         uses: actions/upload-artifact@v1
