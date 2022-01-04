@@ -17,6 +17,16 @@ jobs:
         with:
           node-version: '12.x'
       - name: Install Angular Dependancies
+        env:
+          SERVICE_URL: http://localhost:8080
+          FIREBASE_API_KEY: ${{ secrets.FIREBASE_API_KEY}}
+          FIREBASE_AUTH_DOMAIN: ${{ secrets.FIREBASE_AUTH_DOMAIN}}
+          FIREBASE_DATABASE_URL: ${{ secrets.FIREBASE_DATABASE_URL}}
+          FIREBASE_PROJECT_ID: ${{ secrets.FIREBASE_PROJECT_ID}}
+          FIREBASE_STORAGE_BUCKET: ${{ secrets.FIREBASE_STORAGE_BUCKET}}
+          FIREBASE_MSG_SENDER_ID: ${{ secrets.FIREBASE_MSG_SENDER_ID}}
+          FIREBASE_APP_ID: ${{ secrets.FIREBASE_APP_ID}}
+          FIREBASE_MEASUREMENT_ID: ${{ secrets.FIREBASE_MEASUREMENT_ID}}
         working-directory: ./web
         run: npm ci
       - name: Build web-client
