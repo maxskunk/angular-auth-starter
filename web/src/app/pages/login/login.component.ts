@@ -17,8 +17,6 @@ export class LoginComponent implements OnInit {
 
   }
 
-  public authDomain: string = environment.serviceUrl;
-
   ngOnInit(): void {
   }
 
