@@ -7,7 +7,6 @@ import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { environment } from '../environments/environment';
 import { provideAuth, getAuth } from '@angular/fire/auth';
 import { provideFirestore, getFirestore } from '@angular/fire/firestore';
-import { firebaseconfig } from '../environments/firebaseconfig';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
@@ -34,7 +33,7 @@ import { MatListModule } from '@angular/material/list';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    AngularFireModule.initializeApp(firebaseconfig.config),
+    AngularFireModule.initializeApp(environment.config),
     AngularFireAuthModule,
     // provideFirebaseApp(() => initializeApp(firebaseconfig.firebase)),
     // provideAuth(() => getAuth()),
