@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { Router } from '@angular/router';
 import firebase from 'firebase/compat/app';
+import { environment } from './../../../environments/environment';
 import { FbTestServiceService } from './../../services/fb-test-service.service'
 
 @Component({
@@ -15,6 +16,8 @@ export class LoginComponent implements OnInit {
     private router: Router) {
 
   }
+
+  public authDomain: string = environment.serviceUrl;
 
   ngOnInit(): void {
   }

@@ -19,7 +19,7 @@ be performed manually when developing locally.
     gcloud app deploy
 
 * Live Logging
-    gcloud app logs tail
+   gcloud app logs tail -s auth-starter
 
 
 ## Setup
