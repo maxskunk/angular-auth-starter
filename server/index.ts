@@ -10,7 +10,7 @@ app.use(function (req, res, next) {
         res.header("Access-Control-Allow-Origin", "http://localhost:4200");
     }
     else {
-        res.header("Access-Control-Allow-Origin", "https://www.web.streamtoysgame.com");
+        res.header("Access-Control-Allow-Origin", "https://www.auth.zokyamedia.com/");
     }
     res.header("Access-Control-Allow-Methods", "POST, GET, OPTIONS, DELETE");
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization ");
