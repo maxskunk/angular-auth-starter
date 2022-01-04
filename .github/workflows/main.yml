@@ -18,7 +18,7 @@ jobs:
           node-version: '12.x'
       - name: Install Angular Dependancies
         env:
-          SERVICE_URL: http://localhost:8080
+          SERVICE_URL: https://auth-starter-dot-zokya-media-auth.uc.r.appspot.com/
           FIREBASE_API_KEY: ${{ secrets.FIREBASE_API_KEY}}
           FIREBASE_AUTH_DOMAIN: ${{ secrets.FIREBASE_AUTH_DOMAIN}}
           FIREBASE_DATABASE_URL: ${{ secrets.FIREBASE_DATABASE_URL}}
