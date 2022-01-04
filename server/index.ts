@@ -5,6 +5,24 @@ import { User } from './endpoints/user/user';
 const app = express();
 const PORT = Number(process.env.PORT) || 8080;
 
+app.use(function (req, res, next) {
+    if (process.env.NODE_ENV === 'development') {
+        res.header("Access-Control-Allow-Origin", "http://localhost:4200");
+    }
+    else {
+        res.header("Access-Control-Allow-Origin", "https://www.web.streamtoysgame.com");
+    }
+    res.header("Access-Control-Allow-Methods", "POST, GET, OPTIONS, DELETE");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization ");
+    next();
+});
+
+app.use(express.urlencoded(
+    {
+        extended: true
+    }
+));
+
 //Test
 const testRoute = new Test();
 app.get('/test/timezones', testRoute.getLocationsWithTimezones);

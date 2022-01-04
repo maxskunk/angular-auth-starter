@@ -1,0 +1,8 @@
+<div *ngIf="userToo$ | async as usertoo">
+  Logged in As: {{usertoo.displayName}}
+</div>
+
+<!-- //Service Call -->
+<div *ngIf="user$ | async as user">
+  USER LOADED {{user.user}}
+</div>
