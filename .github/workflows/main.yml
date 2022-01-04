@@ -37,13 +37,13 @@ jobs:
         uses: actions/upload-artifact@v1
         with:
           name: deploy_dist_client
-          path: ./web/www
+          path: ./web/dist/web
       - name: Deploy Web Client to Zokyamedia.com
         uses: wlixcc/SFTP-Deploy-Action@v1.0
         with:
           username: 'zokya'
           server: 'zokyamedia.com'
           ssh_private_key: ${{ secrets.SSH_KEY}}
-          local_path: './www/*'
+          local_path: './web/dist/web/*'
           remote_path: './auth.zokyamedia.com/'
           args: '-o ConnectTimeout=5'
