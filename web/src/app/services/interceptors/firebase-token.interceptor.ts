@@ -1,9 +1,8 @@
-import { HttpEvent, HttpHandler, HttpHeaders, HttpInterceptor, HttpRequest } from "@angular/common/http";
+import { HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { AngularFireAuth } from "@angular/fire/compat/auth";
-// import { CookieService } from 'ngx-cookie-service';
-import { from, Observable, throwError } from "rxjs";
-import { map, switchMap, filter, take } from "rxjs/operators";
+import { from, Observable, of, throwError } from "rxjs";
+import { switchMap, catchError } from "rxjs/operators";
 
 @Injectable()
 export class FirebaseTokenInterceptor implements HttpInterceptor {
@@ -12,10 +11,11 @@ export class FirebaseTokenInterceptor implements HttpInterceptor {
     }
 
     public intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-        const user = this.fbAUth.currentUser
 
         return this.getToken$().pipe(
             switchMap(res => {
+                if (res === "No User")
+                    return next.handle(request);
                 const authReq = request.clone({
                     setHeaders: {
                         'Content-Type': 'application/json',
@@ -23,18 +23,21 @@ export class FirebaseTokenInterceptor implements HttpInterceptor {
                     }
                 });
                 return next.handle(authReq);
+            }),
+            catchError(e => {
+                return throwError(() => e)
             })
+
         )
     }
 
     public getToken$(): Observable<any> {
         return from(this.fbAUth.currentUser).pipe(
-            filter(user => user !== null),
             switchMap(user => {
                 if (user !== null) {
                     return from(user.getIdTokenResult(false));
                 } else {
-                    return throwError(() => new Error('No User Token'))
+                    return of("No User");
                 }
             }));
     }
