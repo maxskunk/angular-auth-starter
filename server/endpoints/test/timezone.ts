@@ -1,10 +1,6 @@
 import { Request, Response, NextFunction } from 'express';
 import { Util } from '../../utils/util';
-const myModule = require('./../../firebase/shared-firebase');
-
-const admin = myModule.admin;
-const db = myModule.db;
-
+import { admin, authDb } from './../../firebase/shared-firebase';
 interface LocationWithTimezone {
     location: string;
     timezoneName: string;
@@ -53,7 +49,7 @@ export class Test {
 
     public async getList(request: Request, response: Response, next: NextFunction) {
         //const effectSnapshot = await db.collection('test').where('uid', '==', 'i').limit(1).get();
-        const listSnapshot = await db.collection('test').get();
+        const listSnapshot = await authDb.collection('test').get();
         if (listSnapshot.empty) {
             return response.status(400).json("No Data");
         }

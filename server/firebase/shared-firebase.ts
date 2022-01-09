@@ -1,13 +1,17 @@
 import * as admin from 'firebase-admin';
+import * as firebase from "firebase-admin";
+import { cert } from 'firebase-admin/app';
 
+//Autenticate to main auth server
 admin.initializeApp({
-    credential: admin.credential.applicationDefault(),
-    databaseURL: 'https://<DATABASE_NAME>.firebaseio.com'
+    credential: admin.credential.applicationDefault()
 });
 
-const database = admin.firestore();
+// //Authenticate to database
+// const zonksServiceAccount = require('./../secrets/zokya-zonks-firebase-adminsdk-vpadf-ee07e72b50.json');
+// const zonkProject = firebase.initializeApp({ credential: cert(zonksServiceAccount) }, 'zonkProject');
 
-module.exports = {
-    admin: admin,
-    db: database
-};
+//Export
+const authDb = admin.firestore();
+// const zonksDb = zonkProject.firestore();
+export { admin, authDb };
