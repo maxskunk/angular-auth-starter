@@ -6,3 +6,6 @@
 <div *ngIf="user$ | async as user">
   USER LOADED {{user.user}}
 </div>
+
+<button mat-raised-button color="primary" (click)="onAddZonks()">Add Zonks</button>
+<button mat-raised-button color="accent" (click)="onGetZonks()">Get Zonks</button>

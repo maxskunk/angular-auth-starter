@@ -46,6 +46,7 @@ const environmentFileContent = `
   export const environment = {
     production: ${isProduction},
     serviceUrl: '${process.env.SERVICE_URL}',
+    zonksApiUrl:'${process.env.ZONKS_API_URL}',
     config: {
         apiKey: '${process.env.FIREBASE_API_KEY}',
         authDomain: '${process.env.FIREBASE_AUTH_DOMAIN}',
